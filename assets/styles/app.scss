@@ -7,3 +7,10 @@
 @import "layout/footer";
 
 // COMPONENTS
+@import "components/trick";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

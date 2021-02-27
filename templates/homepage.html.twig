@@ -1,1 +1,113 @@
 {% extends 'base.html.twig' %}
+
+{% block header %}
+
+            <div class="header-homepage">
+                <h1 class="title homepage-title text-white text-uppercase">
+                    snowtricks, le lieu où partagez ses aventures de glisse !
+                </h1>
+            </div>
+
+{% endblock %}
+
+{% block tricks %}
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <div class="tricks-grid-wrapper">
+                    {# foreach trick as tricks #}
+                    <div class="card trick-card">
+                        <div class="card-img-container">
+                            <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}" alt="trick image">
+                            <div class="card-img-icon">TEST</div>
+                        </div>
+                        <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                            <h5 class="card-title">
+                                <a href="#">Trick title</a>
+                            </h5>
+                            <div class="trick-btn-wrapper align-self-end">
+                                <a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="#" class="btn btn-primary"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {# JUST KEEP THIS ONE #}
+
+                    <div class="card trick-card">
+                        <div class="card-img-container">
+                            <a href="#">
+                                <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}" alt="trick image">
+                                <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                            <h5 class="card-title">
+                                <a href="#">Trick title</a>
+                            </h5>
+                            <div class="trick-btn-wrapper align-self-end">
+                                <a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="#" class="btn btn-primary"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card trick-card">
+                        <div class="card-img-container">
+                            <a href="#">
+                                <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}" alt="trick image">
+                                <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                            <h5 class="card-title">
+                                <a href="#">Trick title</a>
+                            </h5>
+                            <div class="trick-btn-wrapper align-self-end">
+                                <a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="#" class="btn btn-primary"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card trick-card">
+                        <div class="card-img-container">
+                            <a href="#">
+                                <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}" alt="trick image">
+                                <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                            <h5 class="card-title">
+                                <a href="#">Trick title</a>
+                            </h5>
+                            <div class="trick-btn-wrapper align-self-end">
+                                <a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="#" class="btn btn-primary"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card trick-card">
+                        <div class="card-img-container">
+                            <a href="#">
+                                <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}" alt="trick image">
+                                <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
+                            </a>
+                        </div>
+                        <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                            <h5 class="card-title">
+                                <a href="#">Trick title</a>
+                            </h5>
+                            <div class="trick-btn-wrapper align-self-end">
+                                <a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                <a href="#" class="btn btn-primary"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# endfor #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
