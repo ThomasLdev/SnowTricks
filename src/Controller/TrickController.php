@@ -16,24 +16,29 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/", name="home", methods={"GET"})
+     * @param TrickRepository $trickRepository
+     * @return Response
      */
-    public function home(): Response
+    public function home(TrickRepository $trickRepository): Response
     {
-        return $this->render('homepage.html.twig');
+        return $this->render('homepage.html.twig',
+            [
+                'tricks' => $trickRepository->findAll(),
+            ]);
     }
 
-    /**
+    /*
      * @Route("/home", name="trick_index", methods={"GET"})
      */
-    public function index(TrickRepository $trickRepository): Response
+    /*public function index(TrickRepository $trickRepository): Response
     {
         return $this->render('trick/index.html.twig', [
             'tricks' => $trickRepository->findAll(),
         ]);
-    }
+    }*/
 
     /**
-     * @Route("/new", name="trick_new", methods={"GET","POST"})
+     * @Route("/trick/new", name="trick_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -56,7 +61,7 @@ class TrickController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="trick_edit", methods={"GET","POST"})
+     * @Route("/trick/edit/{id}", name="trick_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Trick $trick): Response
     {
@@ -76,7 +81,7 @@ class TrickController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="trick_show", methods={"GET"})
+     * @Route("/trick/{id}", name="trick_show", methods={"GET"})
      */
     public function show(Trick $trick): Response
     {
@@ -86,13 +91,12 @@ class TrickController extends AbstractController
     }
 
 
-
     /**
-     * @Route("/{id}", name="trick_delete", methods={"DELETE"})
+     * @Route("/trick/delete/{id}", name="trick_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Trick $trick): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$trick->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $trick->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($trick);
             $entityManager->flush();
