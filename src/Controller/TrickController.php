@@ -27,18 +27,10 @@ class TrickController extends AbstractController
             ]);
     }
 
-    /*
-     * @Route("/home", name="trick_index", methods={"GET"})
-     */
-    /*public function index(TrickRepository $trickRepository): Response
-    {
-        return $this->render('trick/index.html.twig', [
-            'tricks' => $trickRepository->findAll(),
-        ]);
-    }*/
-
     /**
      * @Route("/trick/new", name="trick_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -51,7 +43,7 @@ class TrickController extends AbstractController
             $entityManager->persist($trick);
             $entityManager->flush();
 
-            return $this->redirectToRoute('trick_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('trick/new.html.twig', [
@@ -62,6 +54,9 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/trick/edit/{id}", name="trick_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Trick $trick
+     * @return Response
      */
     public function edit(Request $request, Trick $trick): Response
     {
@@ -71,7 +66,7 @@ class TrickController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('trick_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('trick/edit.html.twig', [
@@ -82,6 +77,8 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/trick/{id}", name="trick_show", methods={"GET"})
+     * @param TrickRepository $trickRepository
+     * @return Response
      */
     public function show(TrickRepository $trickRepository): Response
     {
@@ -92,9 +89,11 @@ class TrickController extends AbstractController
             ]);
     }
 
-
     /**
      * @Route("/trick/delete/{id}", name="trick_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Trick $trick
+     * @return Response
      */
     public function delete(Request $request, Trick $trick): Response
     {
@@ -104,6 +103,6 @@ class TrickController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('trick_index');
+        return $this->redirectToRoute('home');
     }
 }
