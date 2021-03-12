@@ -4,13 +4,15 @@
 
     <div class="header-homepage d-flex justify-content-center align-items-center flex-column">
         <h1 class="title homepage-title text-white text-uppercase">snowtricks</h1>
-        <p class="title homepage-title text-white text-uppercase">le lieu où partager <br> vos aventures de glisse !</p>
+        <p class="title homepage-title text-white text-uppercase">a place to share <br> your riding adventures !</p>
     </div>
+
+    <a href="#tricks-acre"><i class="fas fa-arrow-down"></i></a>
 
 {% endblock %}
 
 {% block tricks %}
-    <div class="container tricks-container">
+    <div class="container tricks-container" id="tricks-acre">
         <div class="tricks-grid-wrapper">
             {% for trick in tricks %}
                 <div class="card trick-card">

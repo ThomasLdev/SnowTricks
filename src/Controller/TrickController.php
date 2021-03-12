@@ -16,8 +16,6 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/", name="home", methods={"GET"})
-     * @param TrickRepository $trickRepository
-     * @return Response
      */
     public function home(TrickRepository $trickRepository): Response
     {
@@ -29,8 +27,6 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/trick/new", name="trick_new", methods={"GET","POST"})
-     * @param Request $request
-     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -54,9 +50,6 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/trick/edit/{id}", name="trick_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Trick $trick
-     * @return Response
      */
     public function edit(Request $request, Trick $trick): Response
     {
@@ -77,23 +70,17 @@ class TrickController extends AbstractController
 
     /**
      * @Route("/trick/{id}", name="trick_show", methods={"GET"})
-     * @param TrickRepository $trickRepository
-     * @return Response
      */
-    public function show(TrickRepository $trickRepository): Response
+    public function show(Trick $trick): Response
     {
-        $id = null;
         return $this->render('trick/show.html.twig',
             [
-                'trick' => $trickRepository->findOneBy($id),
+                'trick' => $trick,
             ]);
     }
 
     /**
      * @Route("/trick/delete/{id}", name="trick_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Trick $trick
-     * @return Response
      */
     public function delete(Request $request, Trick $trick): Response
     {

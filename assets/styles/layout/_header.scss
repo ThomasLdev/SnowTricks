@@ -14,3 +14,30 @@ html, body {
 .homepage-title{
   @include main-title;
 }
+
+.header-trick{
+  position: relative;
+  background-image: url("../../medias/images/header.jpg");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.action-wrapper {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.home-link {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  color: white;
+  font-size: 2rem;
+}
+
+.home-link:hover {
+  color: white;
+}

@@ -39,8 +39,8 @@ final class TrickFactory extends ModelFactory
         return [
 
             'name' => self::faker()->realText(10),
-            'category' => self::faker()->realText(),
-            'description' => self::faker()->paragraph,
+            'category' => self::faker()->realText(10),
+            'description' => self::faker()->paragraph(20, true),
             'created_at' => self::faker()->dateTimeBetween('-30 days', '-1 day'),
             'updated_at' => new DateTime()
 
