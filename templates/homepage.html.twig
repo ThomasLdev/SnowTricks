@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+
+    <div class="header-homepage d-flex justify-content-center align-items-center flex-column">
+        <h1 class="title homepage-title text-white text-uppercase">snowtricks</h1>
+        <p class="title homepage-title text-white text-uppercase">le lieu où partager <br> vos aventures de glisse !</p>
+    </div>
+
+{% endblock %}
+
+{% block tricks %}
+    <div class="container tricks-container">
+        <div class="tricks-grid-wrapper">
+            {% for trick in tricks %}
+            <div class="card trick-card">
+                <div class="card-img-container">
+                    <a href="{{ path('trick_show', { id: trick.id }) }}">
+                        <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
+                             alt="trick image">
+                        <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
+                    </a>
+                </div>
+                <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                    <h5 class="card-title">
+                        <a href="{{ path('trick_show', { id: trick.id }) }}">{{ trick.name|capitalize }}</a>
+                    </h5>
+                    <div class="trick-btn-wrapper align-self-end">
+                        <a href="#" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="#" class="btn text-white bg-danger"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="w-100 d-flex justify-content-center align-items-center p-3">
+            <a href="#" class="btn btn-lg bg-dark p-3 text-uppercase text-white">Load More</a>
+        </div>
+
+    </div>
+{% endblock %}

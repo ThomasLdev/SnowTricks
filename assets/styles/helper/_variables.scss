@@ -1,0 +1,10 @@
+$main-font: 'Open Sans Bold 700', sans-serif;
+$alternate-font: 'Montserrat', sans-serif;
+
+@mixin main-title {
+  font-family: $main-font;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 5rem;
+  text-align: center;
+}
