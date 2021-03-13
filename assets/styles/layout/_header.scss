@@ -11,14 +11,14 @@ html, body {
   background-size: cover;
 }
 
-.homepage-title{
+.homepage-title, .showpage-title{
   @include main-title;
 }
 
 .header-trick{
   position: relative;
   background-image: url("../../medias/images/header.jpg");
-  height: 500px;
+  height: 650px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,7 +27,7 @@ html, body {
 .action-wrapper {
   position: absolute;
   right: 10px;
-  top: 10px;
+  bottom: 10px;
 }
 
 .home-link {
@@ -41,3 +41,31 @@ html, body {
 .home-link:hover {
   color: white;
 }
+
+.header-homepage-acre{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: white;
+  font-size: 2rem;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  background: none;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.nav-link, .logo {
+  @include nav-link;
+}
+
+.navbar-fixed-top.scrolled {
+  background-color: #343a40 !important;
+  transition: background-color 200ms linear;
+}
+

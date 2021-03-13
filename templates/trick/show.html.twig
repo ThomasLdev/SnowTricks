@@ -4,76 +4,46 @@
 
 
 {% block header %}
-    <div class="container-fluid mt-3">
-        <div class="header-trick d-flex justify-content-center align-items-center flex-column">
-            <h1 class="title homepage-title text-white text-uppercase">{{ trick.name|capitalize }}</h1>
-            <div class="action-wrapper">
 
-            </div>
-
+    <div class="header-trick d-flex justify-content-center align-items-center flex-column">
+        {% block secondary %}
+        <h1 class="title showpage-title text-white text-uppercase">{{ trick.name|capitalize }}</h1>
+        {% endblock %}
+        {% block actions %}
             <div class="action-wrapper d-flex justify-content-center align-items-center">
                 <a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-primary mr-2"><i
-                            class="fas fa-pencil-alt"></i></a>
-                <a href="{{ path('trick_delete', { id: trick.id }) }}" class="btn text-white bg-danger"><i
-                            class="far fa-trash-alt"></i></a>
+                            class="fas fa-screwdriver"></i></a>
             </div>
 
             <a class="home-link" href="{{ path('home') }}">back to list</a>
-        </div>
+        {% endblock %}
+
+
     </div>
 
 {% endblock %}
-
     {% block tricks %}
-
-        <div class="media-grid-wrapper">
-            {# {% for media in medias %} #}
-
-            <div class="card media-card">
-                <div class="card-img-container">
-                    <a href="{{ path('trick_show', { id: trick.id }) }}">
-                        <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
-                             alt="trick image">
-                        <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
-                    </a>
+        {% block medias %}
+            <div class="row d-flex justify-content-center align-items-center mt-4">
+                {# {% for media in medias %} #}
+                <div class="col-lg-3 d-flex justify-content-center align-items-center">
+                    <div class="card media-card">
+                        <div class="card-img-container">
+                            <a href="#">
+                                <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
+                                     alt="trick image">
+                                <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                {# {% endfor %} #}
             </div>
+        {% endblock %}
 
-            <div class="card media-card">
-                <div class="card-img-container">
-                    <a href="{{ path('trick_show', { id: trick.id }) }}">
-                        <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
-                             alt="trick image">
-                        <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
-                    </a>
-                </div>
-            </div>
 
-            <div class="card media-card">
-                <div class="card-img-container">
-                    <a href="{{ path('trick_show', { id: trick.id }) }}">
-                        <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
-                             alt="trick image">
-                        <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="card media-card">
-                <div class="card-img-container">
-                    <a href="{{ path('trick_show', { id: trick.id }) }}">
-                        <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
-                             alt="trick image">
-                        <div class="card-img-icon"><i class="far fa-eye fa-3x"></i></div>
-                    </a>
-                </div>
-            </div>
-
-            {# {% endfor %} #}
-        </div>
-
+        {% block contentTrick %}
         <div class="container">
-
             <div class="row">
                 <div class="col-12">
                     <article class="text-center mt-4">
@@ -81,7 +51,6 @@
                     </article>
                 </div>
             </div>
-
             <div class="row mt-4 mb-4">
                 <div class="col-12 d-flex flex-row justify-content-center align-items-center">
                     <div class="trick-meta">
@@ -89,13 +58,11 @@
                             Created : {{ trick.createdAt|date('d-m-Y') }}
                         </p>
                     </div>
-
                     <div class="trick-meta">
                         <p class="mb-0 p-3">
                             Updated : {{ trick.updatedAt|date('d-m-Y') }}
                         </p>
                     </div>
-
                     <div class="trick-meta">
                         <p class="mb-0 p-3">
                             Category : {{ trick.category }}
@@ -103,9 +70,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
+            {% endblock %}
+
+        {% block edit %}
+        {% endblock %}
     {% endblock %}
+
 
 
 

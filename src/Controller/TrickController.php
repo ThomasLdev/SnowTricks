@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Media;
 use App\Entity\Trick;
 use App\Form\TrickType;
 use App\Repository\TrickRepository;
@@ -53,13 +54,26 @@ class TrickController extends AbstractController
      */
     public function edit(Request $request, Trick $trick): Response
     {
+
+        // dummy code - add some example tags to the task
+        // (otherwise, the template will render an empty list of tags)
+        dump($trick->getMedias());
+        $media1 = new Media();
+        $media1->setPath('media1');
+        $trick->addMedia($media1);
+        $media2 = new Media();
+        $media2->setPath('media2');
+        $trick->addMedia($media2);
+        dump($trick->getMedias());
+        // end dummy code
+
         $form = $this->createForm(TrickType::class, $trick);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('trick_edit', ['id' =>$trick->getId()]);
         }
 
         return $this->render('trick/edit.html.twig', [

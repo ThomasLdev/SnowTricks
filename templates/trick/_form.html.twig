@@ -1,4 +1,13 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_row(form.name) }}
+{{ form_row(form.description) }}
+{{ form_row(form.category) }}
+
+<ul class="medias">
+    {% for media in form.medias %}
+        <li>{{ form_row(media.path) }}</li>
+    {% endfor %}
+</ul>
+    <button type="submit" class="btn btn-lg btn-primary">{{ button_label|default('Save') }}</button>
+
 {{ form_end(form) }}

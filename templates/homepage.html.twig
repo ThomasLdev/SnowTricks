@@ -3,19 +3,20 @@
 {% block header %}
 
     <div class="header-homepage d-flex justify-content-center align-items-center flex-column">
-        <h1 class="title homepage-title text-white text-uppercase">snowtricks</h1>
-        <p class="title homepage-title text-white text-uppercase">a place to share <br> your riding adventures !</p>
+        <h1 class="title homepage-title text-white text-uppercase"></h1>
+
     </div>
 
-    <a href="#tricks-acre"><i class="fas fa-arrow-down"></i></a>
+    <a class="header-homepage-acre" href="#tricks-acre"><i class="fas fa-arrow-down fa-2x"></i></a>
 
 {% endblock %}
 
 {% block tricks %}
     <div class="container tricks-container" id="tricks-acre">
-        <div class="tricks-grid-wrapper">
+        <div class="row mt-3 d-flex justify-content-center align-items-center">
             {% for trick in tricks %}
-                <div class="card trick-card">
+                <div class="col-lg-3 col-md-5 col-12 d-flex justify-content-center align-items-center">
+                <div class="card trick-card mt-4">
                     <div class="card-img-container">
                         <a href="{{ path('trick_show', { id: trick.id }) }}">
                             <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
@@ -27,19 +28,46 @@
                         <h5 class="card-title">
                             <a href="{{ path('trick_show', { id: trick.id }) }}">{{ trick.name|capitalize }}</a>
                         </h5>
-                        <div class="trick-btn-wrapper align-self-end">
-                            <a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-primary"><i
-                                        class="fas fa-pencil-alt"></i></a>
-                            <a href="{{ path('trick_delete', { id: trick.id }) }}" class="btn text-white bg-danger"><i
-                                        class="far fa-trash-alt"></i></a>
+                        <div class="trick-btn-wrapper d-flex justify-content-center align-items-center">
+                            <a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-primary m-1">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <form method="post" action="{{ path('trick_delete', {'id': trick.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ trick.id) }}">
+                                <button class="btn bg-danger text-white m-1"><i
+                                            class="far fa-trash-alt"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
+        </div>
             {% endfor %}
         </div>
         <div class="w-100 d-flex justify-content-center align-items-center p-3">
-            <a href="#" class="btn btn-lg bg-dark p-3 text-uppercase text-white">Load More</a>
+            <a href="#" class="btn btn-lg bg-dark p-3 text-uppercase text-white m-1">Load More</a>
+            <a href="{{ path('trick_new')}}" class="btn btn-lg bg-success p-3 text-uppercase text-white m-1">Add Trick</a>
         </div>
-
     </div>
+
+    {# <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete the Trick</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You are about to delete the trick.</p>
+                    <p>Is that wat you want ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn text-white bg-danger">Delete the trick</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No !</button>
+                </div>
+            </div>
+        </div>
+    </div> #}
 {% endblock %}

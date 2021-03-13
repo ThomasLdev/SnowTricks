@@ -1,13 +1,58 @@
-{% extends 'base.html.twig' %}
+{% extends 'trick/show.html.twig' %}
 
 {% block title %}Edit Trick{% endblock %}
 
-{% block body %}
-    <h1>Edit Trick</h1>
-
-    {{ include('trick/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('trick_index') }}">back to list</a>
-
-    {{ include('trick/_delete_form.html.twig') }}
+{% block secondary %}
+    <h1 class="title showpage-title text-white text-uppercase">Edit : {{ trick.name }}</h1>
 {% endblock %}
+{% block actions %}
+    <div class="action-wrapper d-flex justify-content-center align-items-center">
+        <a href="{{ path('trick_edit', { id: trick.id }) }}" class="btn btn-primary mr-2"><i
+                    class="fas fa-pencil-alt"></i></a>
+        <a href="{{ path('trick_delete', { id: trick.id }) }}" class="btn text-white bg-danger"><i
+                    class="far fa-trash-alt"></i></a>
+    </div>
+
+    <a class="home-link" href="{{ path('trick_show', { id: trick.id }) }}">back to trick</a>
+{% endblock %}
+
+{% block medias %}
+<div class="row d-flex justify-content-center align-items-center mt-4">
+    {# {% for media in medias %} #}
+    <div class="col-lg-3 d-flex justify-content-center align-items-center">
+        <div class="card media-card">
+            <div class="card-img-container">
+                <a href="#">
+                    <img class="card-img-top trick-img" src="{{ asset('uploads/tricks/trick-test.jpg') }}"
+                         alt="trick image">
+                    <div class="card-img-icon">
+                        {#  <a href="{{ path('media_edit', { id: trick.id }) }}" class="btn btn-primary mr-2"><i
+                                    class="fas fa-pencil-alt"></i></a>
+                        <a href="{{ path('media_delete', { id: trick.id }) }}" class="btn text-white bg-danger"><i
+                                    class="far fa-trash-alt"></i>
+                        </a>#}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+        {# {% endfor %} #}
+
+</div>
+    {% endblock %}
+
+    {% block contentTrick %}
+    {% endblock %}
+
+    {% block edit %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {{ include('trick/_form.html.twig', {'button_label': 'Edit'}) }}
+                </div>
+            </div>
+        </div>
+        {# {{ include('trick/_delete_form.html.twig') }} #}
+
+    {% endblock %}

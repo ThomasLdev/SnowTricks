@@ -4,12 +4,15 @@ namespace App\Entity;
 
 use App\Repository\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=MediaRepository::class)
  */
 class Media
 {
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -35,7 +38,13 @@ class Media
     /**
      * @ORM\ManyToOne(targetEntity=Trick::class, inversedBy="media")
      */
-    private $trick_id;
+    private $trick;
+
+    public function __construct()
+    {
+        $this->type = "image";
+        $this->uploadedAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -78,14 +87,14 @@ class Media
         return $this;
     }
 
-    public function getTrickId(): ?Trick
+    public function getTrick(): ?Trick
     {
-        return $this->trick_id;
+        return $this->trick;
     }
 
-    public function setTrickId(?Trick $trick_id): self
+    public function setTrick(?Trick $trick): self
     {
-        $this->trick_id = $trick_id;
+        $this->trick = $trick;
 
         return $this;
     }

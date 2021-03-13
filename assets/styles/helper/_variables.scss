@@ -12,3 +12,11 @@ $alternate-font: 'Montserrat', sans-serif;
     font-size: 3rem;
   }
 }
+
+@mixin nav-link {
+  font-family: $main-font;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
